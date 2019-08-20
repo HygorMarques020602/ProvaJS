@@ -1,0 +1,187 @@
+/*== Ajuste Tela ==*/
+section{
+	position: absolute;
+	top: 0;
+}
+body{
+	position: relative;
+
+}
+
+@font-face {
+     font-family: helveticaneue;
+     src: url('HelveticaNeueLTStd-UltLt.otf');
+}
+
+html { font-size: calc(1em + 1vw); }
+
+body{
+	font-family: "Impact";
+	background: #696969;
+	color: #FFA500;
+}
+
+/*	Tela Inicial */
+.inicio{
+	text-align: center;
+	margin: 11vh 12vw;
+}
+.inicio h1{
+	margin-bottom: 7vh;
+	font-size: 3em;
+	text-decoration: underline;
+}
+.inicio h2{
+	font-size: 2em;
+}
+.inicio li{
+	margin-top: 5vh; 
+	font-size: 1.4em;
+}
+.inicio li:nth-child(2){
+	margin-bottom: 5vh;
+}
+.inicio p{
+	border-style: none;
+	background: #FFA500;
+	color: #696969;
+	padding: 5vh 23vw;
+	font-size: 1.6em;
+}
+
+/*	Tela Principal 1*/
+.principal1{
+	text-align: center;
+	margin: 0.6vh 5.5vw;
+}
+.principal1 h1{
+	font-size: 2.5em;
+	margin-bottom: 1.5vh;
+}
+.principal1 h2{
+	background: #D3D3D3;
+	color: #696969;
+	border-radius: 15px;
+	padding: 3vh 5vw;
+	font-size: 2em;
+}
+.principal1 img{
+	height: 50vh;
+}
+.principal1 li{
+	background: #FFA500;
+	color: #696969;
+	border-radius: 15px;
+	text-align: center;
+	line-height: 2vh;
+	padding: 2.8vh 5vw;
+	margin: 1vh 0; 
+}
+
+/*	Tela Principal 2*/
+.principal2{
+	text-align: center;
+	margin: 0.6vh 5.5vw;
+}
+.principal2 h1{
+	font-size: 2.5em;
+	margin-bottom: 1.5vh;
+}
+.principal2 h2{
+	background: #D3D3D3;
+	color: #696969;
+	border-radius: 15px;
+	padding: 3vh 5vw;
+	font-size: 2em;
+}
+.principal2 img{
+	height: 50vh;
+}
+.principal2 li{
+	background: #FFA500;
+	color: #696969;
+	border-radius: 15px;
+	text-align: center;
+	line-height: 2vh;
+	padding: 2.8vh 5vw;
+	margin: 1vh 0; 
+}
+
+/*	Tela Principal 3*/
+.principal3{
+	text-align: center;
+	margin: 0.6vh 5.5vw;
+}
+.principal3 h1{
+	font-size: 2.5em;
+	margin-bottom: 1.5vh;
+}
+.principal3 h2{
+	background: #D3D3D3;
+	color: #696969;
+	border-radius: 15px;
+	padding: 3vh 5vw;
+	font-size: 2em;
+}
+.principal3 img{
+	height: 50vh;
+}
+.principal3 li{
+	background: #FFA500;
+	color: #696969;
+	border-radius: 15px;
+	text-align: center;
+	line-height: 2vh;
+	padding: 2.8vh 5vw;
+	margin: 1vh 0; 
+}
+
+/*	TELA VENCEU */
+.venceu{
+	padding: 10vh 20vw;
+	text-align: center;
+}
+.venceu h1{
+	font-size: 2.5em;
+	margin-bottom: 25.3vh;
+}
+.venceu h2{
+	font-size: 1.5em;
+	margin-bottom: 28.5vh;
+}
+.venceu a{
+	color: #696969;
+	background: #FFA500;
+	text-decoration: none;
+	padding: 5vh 10vw;
+}
+
+/* TELA PERDEU */
+.perdeu{
+	padding: 20.85vh 10vw;
+	text-align: center;
+}
+.perdeu h1{
+	font-size: 2.5em;
+	margin-bottom: 40vh;
+}
+.perdeu a{
+	color: #696969;
+	background: #FFA500;
+	text-decoration: none;
+	padding: 5vh 10vw;
+}
+
+/* POPUP PERDEU */
+.popup{
+	background: transparent;
+	text-align: center;
+	padding: 34vh 15vw;
+	color: #A52A2A;
+}
+.popup div{
+	background: #C0C0C0;
+	line-height: 6vh;
+	padding: 4vh 20vw;
+	border-radius: 10px;
+}

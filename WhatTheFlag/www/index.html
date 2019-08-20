@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>title</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<section class="inicio">
+		<h1>WHAT THE FLAG</h1>
+		<h2>INSTRUÇÕES</h2>
+ 		<ul>
+ 			<li>TRÊS ACERTOS PARA GANHAR</li>
+ 			<li>SE ERRAR O TEMPO DIMINUÍ</li>
+ 		</ul>
+  		<p>INICIAR</p>
+	</section>
+	<section class="principal1" style="display: none">
+		<h1>Fase 1</h1>
+		<h2>
+    		<span class="um">00:</span><span class="dois">30</span>
+    	</h2>
+    	<img src="">
+    	<ul>
+    		<li data-bandeira="img/flag2.png">França</li>
+    		<li data-bandeira="img/flag1.png">Estados Unidos</li>
+    		<li data-bandeira="img/flag3.png">Alemanha</li>
+    	</ul>
+	</section>
+	<section class="principal2" style="display: none">
+		<h1>Fase 2</h1>
+		<h2>
+    		<span class="um">00:</span><span class="dois">30</span>
+    	</h2>
+    	<img src="">
+    	<ul>
+    		<li data-bandeira="img/flag1.png">Estados Unidos</li>
+    		<li data-bandeira="img/flag3.png">Alemanha</li>
+    		<li data-bandeira="img/flag2.png">França</li>
+    	</ul>
+	</section>
+	<section class="principal3" style="display: none">
+		<h1>Fase 3</h1>
+		<h2>
+    		<span class="um">00:</span><span class="dois">30</span>
+    	</h2>
+    	<img src="">
+    	<ul>
+    		<li data-bandeira="img/flag3.png">Alemanha</li>
+    		<li data-bandeira="img/flag2.png">França</li>
+    		<li data-bandeira="img/flag1.png">Estados Unidos</li>
+    	</ul>
+	</section>
+	<section class="venceu" style="display: none">
+		<h1>PARABÉNS</h1>
+		<h2>ACERTOU TODAS AS BANDEIRAS</h2>
+		<a href="index.html">JOGAR NOVAMENTE</a>
+	</section>
+	<section class="perdeu" style="display: none">
+		<h1>NÃO FOI DESSA VEZ</h1>
+		<a href="index.html">TENTAR NOVAMENTE</a>
+	</section>
+	<section class="popup" style="display: none">
+		<div>
+			<h1>ERROU!!!</h1>
+			<p>+1 SEGUNDO AO TEMPO</p>
+		</div>
+	</section>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/shuffle.js"></script>
+<script>
+
+	function gerarContador(elemento){
+		return contagem = setInterval(function(){
+   		var tempo = $(elemento).text();
+  		tempo = parseInt(tempo) -1;
+ 		$(elemento).text(tempo);
+ 	  	if(tempo == 0){
+   		  	clearInterval(contagem);
+    	 	$(atual).fadeOut();
+    	 	perdeu.play();
+    	 	$(".popup").hide();
+    	 	$(".perdeu").fadeIn();
+  		 	}
+ 		 }, 1000);
+ 		 return false;
+		}
+
+	acertou = new Audio("sons/musicaAcerto.mp3")
+	errou = new Audio("sons/errou.mp3")
+	perdeu = new Audio("sons/musicaErro.mp3")
+	venceu = new Audio("sons/vitoria.mp3")
+
+	$(".inicio p").on('click', function(){
+		$(".inicio").fadeOut();
+		$(".principal1").fadeIn();
+
+		atual = $(".principal1");
+		var contador = gerarContador(".principal1 h2 .dois");
+		var bandeiras = ["img/flag1.png", "img/flag2.png", "img/flag3.png"];
+		var num1 = Math.floor(Math.random()*3);
+		var num2 = Math.floor(Math.random()*3);
+		var num3 = Math.floor(Math.random()*3);
+
+ 		$(".principal1 img").attr("src", bandeiras[num1]);
+ 		$(".principal1 ul li").on("click", function(){
+ 			var escolha = $(this).data("bandeira");
+ 			if(escolha==bandeiras[num1]){
+ 				$(".principal1").fadeOut();
+ 				acertou.play();
+ 				$(".principal2").fadeIn();
+ 				clearInterval(contagem);
+
+ 				atual = $(".principal2");
+ 				var contador = gerarContador(".principal2 h2 .dois")
+ 				$(".principal2 img").attr("src", bandeiras[num2]);
+ 				$(".principal2 ul li").on("click", function(){
+ 					var escolha = $(this).data("bandeira");
+ 					if(escolha==bandeiras[num2]){
+ 						$(".principal2").fadeOut();
+ 						acertou.play();
+ 						$(".principal3").fadeIn();
+ 						clearInterval(contagem)
+
+ 						atual = $(".principal3");
+ 						var contador = gerarContador(".principal3 h2 .dois")
+ 						$(".principal3 img").attr("src", bandeiras[num3]);
+ 						$(".principal3 ul li").on("click", function(){
+ 							var escolha = $(this).data("bandeira");
+ 							if(escolha==bandeiras[num3]){
+ 								$(".principal3").fadeOut();
+ 								acertou.play();
+ 								venceu.play();
+ 								$(".venceu").fadeIn();
+ 							}else{
+ 								errou.play();
+ 								var contador2 = gerarContador(".principal3 h2 .dois");
+ 								setTimeout(function(){
+ 								$(".popup").fadeOut();
+ 								},2000);
+ 							}
+ 						})
+ 					}else{
+ 						errou.play();
+ 						var contador2 = gerarContador(".principal2 h2 .dois");
+ 						$(".popup").fadeIn();
+ 						setTimeout(function(){
+ 							$(".popup").fadeOut();
+ 						},2000);
+ 					}
+ 				})
+ 			}else{
+ 				errou.play();
+ 				var contador2 = gerarContador(".principal1 h2 .dois");
+ 				$(".popup").fadeIn();
+ 				setTimeout(function(){
+ 					$(".popup").fadeOut();
+ 				},2000);
+ 			}
+ 		});
+	});
+</script>
+</body>
+</html>
